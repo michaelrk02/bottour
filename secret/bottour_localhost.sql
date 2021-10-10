@@ -27,4 +27,15 @@ INSERT INTO `tour_places` (`place_id`, `center_x`, `center_y`, `title`, `locatio
 (5,	25.79,	72.79,	'Fortune Cookie',	'https://pingfest.com/',	'Simplicity is prerequisite for reliability -E.W. Dijkstra'),
 (6,	74.36,	71.22,	'Fortune Cookie',	'https://pingfest.com/',	'Simplicity is prerequisite for reliability -E.W. Dijkstra');
 
--- 2021-10-10 11:55:04
+DROP TABLE IF EXISTS `tour_settings`;
+CREATE TABLE `tour_settings` (
+  `key` varchar(128) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+TRUNCATE `tour_settings`;
+INSERT INTO `tour_settings` (`key`, `value`) VALUES
+('access_enable',	'1');
+
+-- 2021-10-10 12:08:48

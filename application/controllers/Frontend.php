@@ -66,6 +66,11 @@ class Frontend extends CI_Controller {
     public function map() {
         $this->authz->login_assert();
 
+        $this->load->model('settings_model', 'settings');
+        if (empty($this->settings->get('access_enable'))) {
+            die('Access is currently disabled at this time');
+        }
+
         $this->load->model('places_model', 'places');
 
         $places = $this->places->list_places();
