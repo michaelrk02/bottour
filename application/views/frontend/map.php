@@ -1,12 +1,28 @@
 <div class="m-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="p-2"><b>Nama Tim:</b> <?php echo htmlspecialchars($_SESSION['user']['name']); ?> (<a class="text-danger" onclick="return confirm('Apakah anda yakin?')" href="<?php echo site_url('frontend/logout'); ?>">Logout</a>)</div>
+        </div>
+    </div>
+</div>
+<div class="m-4">
     <div style="position: relative; overflow: auto;">
         <img src="<?php echo base_url('public/tour/img/BGR.jpg'); ?>" style="width: 100%">
         <?php foreach ($places as $place):  ?>
-            <div style="position: absolute; left: <?php echo $place['center_x']; ?>%; top: <?php echo $place['center_y']; ?>%; transform: translate(-50%, -50%)">
+            <div class="d-none d-md-block" style="position: absolute; left: <?php echo $place['center_x']; ?>%; top: <?php echo $place['center_y']; ?>%; transform: translate(-50%, -50%)">
                 <button class="btn btn-primary placebtn" data-place="<?php echo md5($place['place_id']); ?>">KEMUDI <?php echo $place['place_id']; ?></button>
             </div>
         <?php endforeach; ?>
     </div>
+</div>
+<div class="m-4 d-block d-md-none">
+    <ul class="list-group">
+        <?php foreach ($places as $place):  ?>
+            <li class="list-group-item">
+                <a href="#!" class="placebtn" data-place="<?php echo md5($place['place_id']); ?>">KEMUDI <?php echo $place['place_id']; ?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </div>
 <div class="modal fade" id="startup">
     <div class="modal-dialog">
